@@ -3,16 +3,31 @@ package com.kgy.habbit2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
     private HomeFragment homeFragment;
     private GraphFragment graphFragment;
     private MypageFragment mypageFragment;
+    BottomNavigationView bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.tab1:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, homeFragment).commit();
                         return true;
@@ -42,5 +57,14 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+    public void onTabSelected(int position) {
+        if (position == 0) {
+            bottomNavigation.setSelectedItemId(R.id.tab1);
+        } else if (position == 1) {
+            bottomNavigation.setSelectedItemId(R.id.tab2);
+        } else if (position == 2) {
+            bottomNavigation.setSelectedItemId(R.id.tab3);
+        }
     }
 }
