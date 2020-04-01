@@ -42,11 +42,11 @@ public class LoginActivity extends AppCompatActivity {
         // getString의 첫 번째 인자는 저장될 키, 두 번쨰 인자는 값입니다.
         // 첨엔 값이 없으므로 키값은 원하는 것으로 하시고 값을 null을 줍니다.
         loginId = auto.getString("inputId",null);
-//        if(loginId != null) {
-//            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
+        if(loginId != null) {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         // 회원가입 버튼 클릭
         registerBtn.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +66,16 @@ public class LoginActivity extends AppCompatActivity {
 
                 String lsUserId = userId.getText().toString();
                 String lsUserPw = userPw.getText().toString();
+
+                if (lsUserId == null || lsUserId.length() <= 0){
+                    Toast.makeText(LoginActivity.this, "아이디를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (lsUserPw == null || lsUserPw.length() <= 0){
+                    Toast.makeText(LoginActivity.this, "비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override

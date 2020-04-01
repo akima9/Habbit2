@@ -24,6 +24,7 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
+    private long backBtnTime;
     private HomeFragment homeFragment;
     private GraphFragment graphFragment;
     private MypageFragment mypageFragment;
@@ -65,6 +66,19 @@ public class MainActivity extends AppCompatActivity {
             bottomNavigation.setSelectedItemId(R.id.tab2);
         } else if (position == 2) {
             bottomNavigation.setSelectedItemId(R.id.tab3);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        long curTime = System.currentTimeMillis();
+        long gapTime = curTime - backBtnTime;
+
+        if ( 2000 >= gapTime && gapTime >= 0 ) {
+            super.onBackPressed();
+        } else {
+            backBtnTime = curTime;
+            Toast.makeText(MainActivity.this, "한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -32,7 +32,6 @@ public class HomeFragment extends Fragment {
     TextView todayCnt;
     TextView goalCnt;
     TextView backCnt;
-    TextView logout;
     String lsUserId;
 
     @Override
@@ -59,8 +58,6 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        return super.onCreateView(inflater, container, savedInstanceState);
-//        return inflater.inflate(R.layout.home_fragment, container, false);
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.home_fragment, container, false);
         initUI(rootView);
         return rootView;

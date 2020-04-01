@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <CalendarView
-        android:id="@+id/calendar"
+        android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -18,11 +18,12 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:orientation="vertical"
-        app:layout_constraintLeft_toLeftOf="@+id/calendar"
-        app:layout_constraintRight_toRightOf="@+id/calendar"
-        app:layout_constraintTop_toBottomOf="@+id/calendar">
+        app:layout_constraintLeft_toLeftOf="@+id/calendarView"
+        app:layout_constraintRight_toRightOf="@+id/calendarView"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView">
 
         <TextView
+            android:id="@+id/selectedDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="00년 00월 00일 목표 개수"
@@ -30,9 +31,9 @@
             android:layout_marginBottom="5dp"/>
 
         <TextView
+            android:id="@+id/goalCnt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="10개"
             android:textSize="30sp"
             android:gravity="center"
             android:layout_marginBottom="10dp"/>
@@ -45,19 +46,21 @@
             android:layout_marginBottom="5dp" />
 
         <TextView
+            android:id="@+id/todayCnt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="10개"
+            android:text="현재 진행중 입니다."
             android:textSize="30sp"
             android:gravity="center"
             android:layout_marginBottom="10dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="참 잘했어요! 내일도 화이팅!"
-            android:textSize="24sp"
-            android:gravity="center" />
+<!--        <TextView-->
+<!--            android:id="@+id/comment"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="참 잘했어요! 내일도 화이팅!"-->
+<!--            android:textSize="24sp"-->
+<!--            android:gravity="center" />-->
 
     </LinearLayout>
 
