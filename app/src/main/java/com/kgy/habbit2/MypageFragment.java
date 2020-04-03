@@ -71,6 +71,7 @@ public class MypageFragment extends Fragment {
         lsUserId = sessionManage.getAttribute(getContext(), "userId");
 
         Button logout = rootView.findViewById(R.id.logout);
+        Button deleteId = rootView.findViewById(R.id.deleteId);
 
         // 로그아웃 클릭
         logout.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +85,39 @@ public class MypageFragment extends Fragment {
                 Intent intent = new Intent(getContext(), LoginActivity.class);
                 startActivity(intent);
                 getActivity().finish();
+            }
+        });
+
+        // 탈퇴 버튼 클릭
+        deleteId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            // todayCnt, goal 받아와서 set 하기
+                            Log.d("Habbit", "response2 : "+response);
+//                            {"success":true}
+                            JSONObject jsonObject = new JSONObject(response);
+                            String status = jsonObject.getString("success");
+                            if (status.equals("true")){
+                                SharedPreferences auto = getActivity().getSharedPreferences("auto", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = auto.edit();
+                                editor.clear();
+                                editor.commit();
+                                Intent intent = new Intent(getContext(), LoginActivity.class);
+                                startActivity(intent);
+                                getActivity().finish();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                UserDeleteRequest userDeleteRequest = new UserDeleteRequest(lsUserId, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(getContext());
+                queue.add(userDeleteRequest);
             }
         });
     }

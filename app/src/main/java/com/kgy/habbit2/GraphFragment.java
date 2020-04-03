@@ -34,8 +34,12 @@ public class GraphFragment extends Fragment {
     CalendarView calendarView;
     TextView selectedDate;
     TextView goalCnt;
+    TextView todayCntView;
 
     String lsUserId;
+
+    String goal;
+    String todayCnt;
 
     @Override
     public void onAttach(Context context) {
@@ -75,6 +79,7 @@ public class GraphFragment extends Fragment {
         calendarView = rootView.findViewById(R.id.calendarView);
         selectedDate = rootView.findViewById(R.id.selectedDate);
         goalCnt = rootView.findViewById(R.id.goalCnt);
+        todayCntView = rootView.findViewById(R.id.todayCnt);
 
         // 초기 날짜 세팅
         Date currentTime = Calendar.getInstance().getTime();
@@ -128,7 +133,24 @@ public class GraphFragment extends Fragment {
                         try {
                             // todayCnt, goal 받아와서 set 하기
                             Log.d("Habbit", "response2 : "+response);
+//                            {"goal":"10","todayCnt":"0","status":200}
                             JSONObject jsonObject = new JSONObject(response);
+                            String status = jsonObject.getString("status");
+                            if (status.equals("200")){
+                                goal = jsonObject.getString("goal");
+                                todayCnt = jsonObject.getString("todayCnt");
+
+                                goalCnt.setText(goal+"개");
+                                todayCntView.setText(todayCnt+"개");
+                            } else {
+                                goalCnt.setText("기록이 없습니다.");
+                                todayCntView.setText("기록이 없습니다.");
+                            }
+
+//                            goalCnt.setText(goal+"개");
+
+
+
                             //String goal_Cnt = jsonObject.getString("goalCnt");
                             //goalCnt.setText(goal_Cnt+"개");
                         } catch (JSONException e) {

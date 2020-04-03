@@ -20,6 +20,9 @@ import androidx.fragment.app.Fragment;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +36,8 @@ public class HomeFragment extends Fragment {
     TextView goalCnt;
     TextView backCnt;
     String lsUserId;
+
+    private InterstitialAd mInterstitialAd;
 
     @Override
     public void onAttach(Context context) {
@@ -58,6 +63,19 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mInterstitialAd = new InterstitialAd(getContext());
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            public void onAdLoaded(){
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                } else {
+                    Log.d("Habbit", "The interstitial wasn't loaded yet.");
+                }
+            }
+        });
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.home_fragment, container, false);
         initUI(rootView);
         return rootView;

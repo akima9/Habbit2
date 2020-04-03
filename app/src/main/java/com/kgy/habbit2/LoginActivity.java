@@ -83,28 +83,35 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             Log.d("Habbit", "response : "+response);
-                            boolean success = jsonObject.getBoolean("success");
-                            if (success) { // 로그인 성공
-
-                                String id = jsonObject.getString("userId");
-
-                                Toast.makeText(getApplicationContext(), "로그인이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-
-                                SharedPreferences auto = getSharedPreferences("auto", Activity.MODE_PRIVATE);
-                                //auto의 loginId와 loginPwd에 값을 저장해 줍니다.
-                                SharedPreferences.Editor autoLogin = auto.edit();
-                                autoLogin.putString("inputId", id);
-                                autoLogin.commit();
-
-                                SessionManage sessionManage = new SessionManage();
-                                sessionManage.setAttribute(LoginActivity.this, "userId", id);
-
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                startActivity(intent);
-                                finish();
-                            } else { // 로그인 실패
-                                Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+//                            boolean success = jsonObject.getBoolean("success");
+                            String status = jsonObject.getString("status");
+                            if (status.equals("N")){
+                                Toast.makeText(getApplicationContext(), "탈퇴한 아이디입니다.", Toast.LENGTH_SHORT).show();
                                 return;
+                            } else {
+                                boolean success = jsonObject.getBoolean("success");
+                                if (success) { // 로그인 성공
+
+                                    String id = jsonObject.getString("userId");
+
+                                    Toast.makeText(getApplicationContext(), "로그인이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+
+                                    SharedPreferences auto = getSharedPreferences("auto", Activity.MODE_PRIVATE);
+                                    //auto의 loginId와 loginPwd에 값을 저장해 줍니다.
+                                    SharedPreferences.Editor autoLogin = auto.edit();
+                                    autoLogin.putString("inputId", id);
+                                    autoLogin.commit();
+
+                                    SessionManage sessionManage = new SessionManage();
+                                    sessionManage.setAttribute(LoginActivity.this, "userId", id);
+
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else { // 로그인 실패
+                                    Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

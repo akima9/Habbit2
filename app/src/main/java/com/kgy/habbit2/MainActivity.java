@@ -17,6 +17,9 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONException;
@@ -29,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private GraphFragment graphFragment;
     private MypageFragment mypageFragment;
     BottomNavigationView bottomNavigation;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,5 +85,18 @@ public class MainActivity extends AppCompatActivity {
             backBtnTime = curTime;
             Toast.makeText(MainActivity.this, "한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void onStop() {
+        Log.d("Habbit","onStop() 실행!!");
+        super.onStop();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
     }
 }
