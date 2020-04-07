@@ -131,7 +131,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
                 if (lsGoalCnt != null || lsGoalCnt.length() > 0 ){
-                    if (!Pattern.matches("^[0-9]$", lsGoalCnt)) {
+                    if (!Pattern.matches("(^[0-9]*$)", lsGoalCnt)) {
                         Toast.makeText(getApplicationContext(), "숫자로만 입력해주세요.", Toast.LENGTH_SHORT).show();
                         return;
                     }
