@@ -18,7 +18,7 @@
         <!--APP ID : ca-app-pub-4654354718575198~1734057105-->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="ca-app-pub-4654354718575198~1734057105" />
 
         <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".LoginActivity">
@@ -33,7 +33,7 @@
             <!--APP ID : ca-app-pub-4654354718575198~1734057105-->
             <meta-data
                 android:name="com.google.android.gms.ads.APPLICATION_ID"
-                android:value="ca-app-pub-3940256099942544~3347511713" />
+                android:value="ca-app-pub-4654354718575198~1734057105" />
         </activity>
     </application>
 

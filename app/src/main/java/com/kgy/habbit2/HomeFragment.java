@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment {
         mInterstitialAd = new InterstitialAd(getContext());
         // TEST 광고 단위 ID : ca-app-pub-3940256099942544/1033173712
         // 광고 단위 ID : ca-app-pub-4654354718575198/4168648754
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId("ca-app-pub-4654354718575198/4168648754");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         mInterstitialAd.setAdListener(new AdListener() {
