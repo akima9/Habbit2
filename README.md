@@ -1,4 +1,4 @@
-# 금연인
+# 금연인 (안드로이드 부분)
 
 **하루에 하나씩 줄여가는 금연 보조 안드로이드 애플리케이션입니다.**
 
@@ -21,3 +21,10 @@
 2. 자동로그인 : sharedpreferences를 사용하여 자동로그인 구현하였습니다.
 
 3. 하루 단위 정보 저장 : Linux crontab을 사용하여 DB에 사용자의 일별 목표개수와 흡연횟수를 저장하였습니다.
+
+**· PDF파일 URL :** https://drive.google.com/file/d/1BCILnI4-02ov60AlStQbFaQx-rBeK6ym/view
+
+**· PHP 백엔드 부분 github URL :** https://github.com/akima9/android_web_server
+
+**· 구글플레이 URL :** https://play.google.com/store/apps/details?id=com.kgy.habbit2
+                        ㄴ(AWS 프리 티어 기간 만료로 서버는 꺼놓은 상태입니다.)
