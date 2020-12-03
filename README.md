@@ -26,5 +26,4 @@
 
 **· PHP 백엔드 부분 github URL :** https://github.com/akima9/android_web_server
 
-**· 구글플레이 URL :** https://play.google.com/store/apps/details?id=com.kgy.habbit2
-                        ㄴ(AWS 프리 티어 기간 만료로 서버는 꺼놓은 상태입니다.)
+**· 구글플레이 URL :** https://play.google.com/store/apps/details?id=com.kgy.habbit2 (AWS 프리 티어 기간 만료로 서버는 꺼놓은 상태입니다.)
