@@ -8,7 +8,7 @@
 
 **· IDE :** Android Studio
 
-**· 인프라 :** AWS EC2(Ubuntu)
+**· 인프라 :** AWS EC2(Ubuntu), AWS RDS
 
 **· 개발언어 :** JAVA
 
